@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 @app.route('/')
 def search():
-    df = pd.read_excel('C:/Users/mathe/Desktop/Lodes/api-tipi/api/tipi.xlsx')
+    df = pd.read_excel('./tipi.xlsx')
     df = df.dropna(subset=['ALIQUOTA'])
 
     ncm = request.args.get('ncm')
@@ -17,5 +17,5 @@ def search():
         result = df.to_dict(orient='records')
     return jsonify(result)
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
